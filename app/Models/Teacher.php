@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Teacher extends Model
 {
     use SoftDeletes;
+    use HasFactory;
 
-    protected $fillable = ['teacher_name'];
+    protected $fillable = ['teacher_name','address'];
 }

@@ -33,14 +33,15 @@ class StudentController extends Controller
     {
         $request->validate([
             'student_name' => 'required|string|max:255',
-            'class_teacher_id' => 'required|exists:teachers,id',
+            'teacher_id' => 'required|exists:teachers,id',
             'class' => 'required|string|max:255',
             'admission_date' => 'required|date',
             'yearly_fees' => 'required|numeric',
         ]);
 
-        Student::create($request->all());
-        return redirect()->route('students.index')->with('success', 'Student created successfully.');
+        $data = Student::create($request->all());
+        
+        return redirect()->route('students.index')->with('success', 'Student created successfully. Id is '.$data->id);
     }
 
     public function show(Student $student)
@@ -58,7 +59,7 @@ class StudentController extends Controller
     {
         $request->validate([
             'student_name' => 'required|string|max:255',
-            'class_teacher_id' => 'required|exists:teachers,id',
+            'teacher_id' => 'required|exists:teachers,id',
             'class' => 'required|string|max:255',
             'admission_date' => 'required|date',
             'yearly_fees' => 'required|numeric',

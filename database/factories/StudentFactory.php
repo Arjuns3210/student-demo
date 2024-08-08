@@ -14,7 +14,7 @@ class StudentFactory extends Factory
     {
         return [
             'student_name' => $this->faker->name,
-            'class_teacher_id' => Teacher::factory(),
+            'teacher_id' => Teacher::factory(),
             'class' => $this->faker->word,
             'admission_date' => $this->faker->date,
             'yearly_fees' => $this->faker->randomFloat(2, 1000, 5000),
